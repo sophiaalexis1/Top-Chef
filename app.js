@@ -201,7 +201,11 @@ function emailMessage(dishOfTheDay) {
     Thank you for subscribing to email alert messages!
     Today's Dish of the day is:
 
-    <DISH OF THE DAY HERE>
+    ID: ${todaysSpecialDish.id}
+    Name: ${todaysSpecialDish.name}
+    Cuisine: ${todaysSpecialDish.cuisine}
+    Servings: ${todaysSpecialDish.servings}
+    Ingredients: ${todaysSpecialDish.ingredients}
 
     We hope to see you in soon!
 
@@ -222,7 +226,11 @@ function textMessage(dishOfTheDay) {
     This is an automated text message alert.
     Today's Dish of the day is:
 
-    <DISH OF THE DAY HERE>
+    ID: ${todaysSpecialDish.id}
+    Name: ${todaysSpecialDish.name}
+    Cuisine: ${todaysSpecialDish.cuisine}
+    Servings: ${todaysSpecialDish.servings}
+    Ingredients: ${todaysSpecialDish.ingredients}
 
     We hope to see you in soon!
 
@@ -239,6 +247,8 @@ function generateMarketingMessage(dishOfTheDay, messageTypeCallback) {
     alert('Sending final message to all 389 customers...')
     // TODO #7: Call the passed-in callback function on the dishOfTheDay.  Save the result as a variable
     // Then, log that result to the console
+    let foundMessage = messageTypeCallback(dishOfTheDay)
+    return foundMessage;
     alert('Success!  Check the console for a copy of the final marketing message!')
 }
 
@@ -289,10 +299,14 @@ function runApp(allDishes, specialDish) {
         case "6":
             // TODO #8: Call the appropriate function to generate the marketing text message.  
             // You will need to provide today's dish and the appropriate callback function as arguments!
+            let text = generateMarketingMessage(specialDish, textMessage)
+            console.log(text)
             break
         case "7":
             // TODO #9: Call the appropriate function to generate the marketing email message.  
             // You will need to provide today's dish and the appropriate callback function as arguments!
+            let email = generateMarketingMessage(specialDish, emailMessage)
+            console.log(email)
             break
         case "Exit":
             alert("Thank you for using the Recipe Searching Application!  Goodbye!")
