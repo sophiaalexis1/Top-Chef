@@ -136,6 +136,7 @@ function findMexicanFood(allDishes) {
     // Debug tip: Place a Breakpoint on the alert AFTER the filter, then hover over "results" to see results of filter 
     // without having to step through the whole thing!
     alert("Found all Mexican dishes!  Check the console for full output.")
+    console.log(results)
     return results
 }
 
@@ -152,7 +153,8 @@ function findItalianFood(allDishes) {
         }
     })
     alert("Found all Italian dishes!  Check the console for full output")
-    return results
+    console.log(results)
+    return results;
 }
 
 function searchCuisines(allDishes) {
@@ -164,6 +166,7 @@ function searchCuisines(allDishes) {
                 return true;
             }
     });
+    console.log(foundCuisine)
     return foundCuisine;
     alert("Found all dishes matching the cuisine search term!  Check the console for full output")
 }
@@ -177,6 +180,7 @@ function searchIngredients(allDishes) {
             return true;
         }
     });
+    console.log(foundIngredients)
     return foundIngredients;
     alert("Found all dishes that contain the ingredient search term!  Check the console for full output")
 }
@@ -187,6 +191,7 @@ function generateCuisineDishName(allDishes) {
     let driverPrinter = allDishes.map(function(el) {
         return `${el.cuisine} ${el.name}`
     });
+    console.log(driverPrinter)
     return driverPrinter
     alert("Successfully combined cuisine and dish names!  Check the console for full output.")
 }
@@ -215,6 +220,7 @@ function emailMessage(dishOfTheDay) {
     (To unsubscribe hit the 'unsubscribe' button below)
     `;
 
+    console.log(message)
     return message;
 }
 
@@ -240,6 +246,7 @@ function textMessage(dishOfTheDay) {
     Text STOP to stop all future messages.
     
     `;
+    console.log(message)
     return message;
 }
 
@@ -277,36 +284,29 @@ function runApp(allDishes, specialDish) {
     Enter "Exit" to quit the application.`, ["1", "2", "3", "4", "5", "6", "7", "Exit"])
     switch (userChoice) {
         case "1":
-            let mexicanDishes = findMexicanFood(allDishes)
-            console.log(mexicanDishes)
+             findMexicanFood(allDishes)
             break
         case "2":
-            let italianDishes = findItalianFood(allDishes)
-            console.log(italianDishes)
+            findItalianFood(allDishes)
             break
         case "3":
-            let cuisineSearchResults = searchCuisines(allDishes)
-            console.log(cuisineSearchResults)
+            searchCuisines(allDishes)
             break
         case "4":
-            let ingredientSearchResults = searchIngredients(allDishes)
-            console.log(ingredientSearchResults)
+            searchIngredients(allDishes)
             break
         case "5":
-            let concatenatedDishes = generateCuisineDishName(allDishes)
-            console.log(concatenatedDishes)
+            generateCuisineDishName(allDishes)
             break
         case "6":
             // TODO #8: Call the appropriate function to generate the marketing text message.  
             // You will need to provide today's dish and the appropriate callback function as arguments!
-            let text = generateMarketingMessage(specialDish, textMessage)
-            console.log(text)
+            generateMarketingMessage(specialDish, textMessage)
             break
         case "7":
             // TODO #9: Call the appropriate function to generate the marketing email message.  
             // You will need to provide today's dish and the appropriate callback function as arguments!
-            let email = generateMarketingMessage(specialDish, emailMessage)
-            console.log(email)
+            generateMarketingMessage(specialDish, emailMessage)
             break
         case "Exit":
             alert("Thank you for using the Recipe Searching Application!  Goodbye!")
